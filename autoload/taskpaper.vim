@@ -157,12 +157,24 @@ function! taskpaper#go_to_project()
     endif
 endfunction
 
-function! taskpaper#next_project()
-    return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'w')
+function! taskpaper#previous_task(...)
+    let flags = a:0 > 0 ? a:1 : ''
+    return search('\v^\t*-\s*\zs', 'bw'. flags)
 endfunction
 
-function! taskpaper#previous_project()
-    return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'bw')
+function! taskpaper#next_task(...)
+    let flags = a:0 > 0 ? a:1 : ''
+    return search('\v^\t*-\s*\zs', 'w'. flags)
+endfunction
+
+function! taskpaper#next_project(...)
+    let flags = a:0 > 0 ? a:1 : ''
+    return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'w'. flags)
+endfunction
+
+function! taskpaper#previous_project(...)
+    let flags = a:0 > 0 ? a:1 : ''
+    return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'bw'. flags)
 endfunction
 
 function! s:search_project(project, depth, begin, end)
@@ -196,6 +208,35 @@ function! taskpaper#search_project(projects)
     normal! ^
 
     return begin
+endfunction
+
+function! taskpaper#search_start_of_item(...)
+    let lnum = a:0 > 0 ? a:1 : line('.')
+    let flags = a:0 > 1 ? a:2 : ''
+
+    let depth = len(matchstr(getline(lnum), '^\t*'))
+    let end = lnum
+    let lnum -= 1
+    while lnum >= 1
+        let line = getline(lnum)
+
+        if line =~ '^\s*$'
+            " Do nothing
+        elseif depth < len(matchstr(line, '^\t*'))
+            let end = lnum
+        else
+            break
+        endif
+
+        let lnum -= 1
+    endwhile
+
+    if flags !~# 'n'
+        call cursor(end, 0)
+        normal! ^
+    endif
+
+    return end
 endfunction
 
 function! taskpaper#search_end_of_item(...)
@@ -513,23 +554,6 @@ function! taskpaper#fold_projects()
     setlocal foldminlines=0 foldtext=foldtext()
     setlocal foldmethod=expr foldlevel=0 foldenable
 endfunction
-
-function! taskpaper#newline()
-    let lnum = line('.')
-    let line = getline('.')
-
-    if lnum == 1 || line !~ '^\s*$' ||
-    \  synIDattr(synID(lnum - 1, 1, 1), "name") != 'taskpaperProject'
-        return ''
-    endif
-
-    let pline = getline(lnum - 1)
-    let depth = len(matchstr(pline, '^\t*'))
-    call setline(lnum, repeat("\t", depth + 1) . '- ')
-
-    return "\<End>"
-endfunction
-
 
 function! taskpaper#tag_style(...)
     if a:0 > 0
