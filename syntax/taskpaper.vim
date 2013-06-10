@@ -38,7 +38,7 @@ HiLink taskpaperContext       Identifier
 HiLink taskpaperProject       Title
 HiLink taskpaperDone          NonText
 HiLink taskpaperCancelled     NonText
-HiLink taskpaperComment       Comment
+HiLink taskpaperComment       Operator
 
 call taskpaper#tag_style_dict(g:task_paper_styles)
 
