@@ -23,20 +23,24 @@ endif
 
 syn case ignore
 
+hi Title gui=bold,underline
+
 syn match taskpaperComment	/^.*$/ contains=taskpaperContext
 syn match taskpaperProject	/^.\+:\(\s\+@[^ \t(]\+\(([^)]*)\)\?\)*$/ contains=taskpaperContext
 syn match taskpaperListItem	/^\t*-\s\+/
 syn match taskpaperContext	/\s\zs@[^ \t(]\+\(([^)]*)\)\?/
 syn match taskpaperDone		/^.*\s@done\(\(\s\|([^)]*)\).*\)\?$/
+syn match taskpaperToday		/\v[^-]*\@today/
 syn match taskpaperCancelled	/^.*\s@cancelled\(\(\s\|([^)]*)\).*\)\?$/
 
 syn sync fromstart
 
 "highlighting for Taskpaper groups
+HiLink taskpaperToday         Search
 HiLink taskpaperListItem      Identifier
 HiLink taskpaperContext       Identifier
 HiLink taskpaperProject       Title
-HiLink taskpaperDone          NonText
+HiLink taskpaperDone          Comment
 HiLink taskpaperCancelled     NonText
 HiLink taskpaperComment       Operator
 
