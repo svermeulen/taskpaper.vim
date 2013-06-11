@@ -30,13 +30,13 @@ syn match taskpaperProject	/^.\+:\(\s\+@[^ \t(]\+\(([^)]*)\)\?\)*$/ contains=tas
 syn match taskpaperListItem	/^\t*-\s\+/
 syn match taskpaperContext	/\s\zs@[^ \t(]\+\(([^)]*)\)\?/
 syn match taskpaperDone		/^.*\s@done\(\(\s\|([^)]*)\).*\)\?$/
-syn match taskpaperToday		/\v[^-]*\@today/
+syn match taskpaperInProgress		/\v[^-]*\@inprogress/
 syn match taskpaperCancelled	/^.*\s@cancelled\(\(\s\|([^)]*)\).*\)\?$/
 
 syn sync fromstart
 
 "highlighting for Taskpaper groups
-HiLink taskpaperToday         Search
+HiLink taskpaperInProgress         Search
 HiLink taskpaperListItem      Identifier
 HiLink taskpaperContext       Identifier
 HiLink taskpaperProject       Title
