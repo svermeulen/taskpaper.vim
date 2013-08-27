@@ -167,6 +167,11 @@ function! taskpaper#next_task(...)
     return search('\v^\t*-\s*\zs', 'w'. flags)
 endfunction
 
+function! taskpaper#new_project()
+   call taskpaper#next_project()
+   exec "normal! kO\<cr>\<esc>i:\<left>"
+endfunction
+
 function! taskpaper#next_project(...)
     let flags = a:0 > 0 ? a:1 : ''
     return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'w'. flags)
