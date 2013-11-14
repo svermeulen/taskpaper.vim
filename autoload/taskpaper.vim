@@ -174,12 +174,12 @@ endfunction
 
 function! taskpaper#next_project(...)
     let flags = a:0 > 0 ? a:1 : ''
-    return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'w'. flags)
+    return search('^\S.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'w'. flags)
 endfunction
 
 function! taskpaper#previous_project(...)
     let flags = a:0 > 0 ? a:1 : ''
-    return search('^\t*\zs.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'bw'. flags)
+    return search('^\S.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'bw'. flags)
 endfunction
 
 function! s:search_project(project, depth, begin, end)
