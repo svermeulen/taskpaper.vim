@@ -174,11 +174,13 @@ endfunction
 
 function! taskpaper#next_project(...)
     let flags = a:0 > 0 ? a:1 : ''
+    normal! m`
     return search('^\S.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'w'. flags)
 endfunction
 
 function! taskpaper#previous_project(...)
     let flags = a:0 > 0 ? a:1 : ''
+    normal! m`
     return search('^\S.\+:\(\s\+@[^\s(]\+\(([^)]*)\)\?\)*$', 'bw'. flags)
 endfunction
 
