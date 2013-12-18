@@ -85,24 +85,24 @@ if !exists("no_plugin_maps") && !exists("no_taskpaper_maps")
     nnoremap <silent> <buffer> <Plug>TaskPaperDoneThenArchive
     \       :call taskpaper#toggle_tag('done', taskpaper#date())<CR>:call taskpaper#archive_done()<CR>:call repeat#set("\<Plug>TaskPaperDoneThenArchive")<cr>
 
-    nmap <buffer> <localleader>p <Plug>TaskPaperFoldProjects
-    nmap <buffer> <localleader>. <Plug>TaskPaperFoldNotes
-    nmap <buffer> <localleader>P <Plug>TaskPaperFocusProject
+    "nmap <buffer> <localleader>p <Plug>TaskPaperFoldProjects
+    "nmap <buffer> <localleader>. <Plug>TaskPaperFoldNotes
+    "nmap <buffer> <localleader>P <Plug>TaskPaperFocusProject
 
-    nmap <buffer> <localleader>/ <Plug>TaskPaperSearchKeyword
-    nmap <buffer> <localleader>s <Plug>TaskPaperSearchTag
+    "nmap <buffer> <localleader>/ <Plug>TaskPaperSearchKeyword
+    "nmap <buffer> <localleader>s <Plug>TaskPaperSearchTag
 
-    nmap <buffer> <localleader>g <Plug>TaskPaperGoToProject
-    nmap <buffer> <localleader>]p <Plug>TaskPaperNextProject
-    nmap <buffer> <localleader>[p <Plug>TaskPaperPreviousProject
+    "nmap <buffer> <localleader>g <Plug>TaskPaperGoToProject
+    "nmap <buffer> <localleader>]p <Plug>TaskPaperNextProject
+    "nmap <buffer> <localleader>[p <Plug>TaskPaperPreviousProject
 
-    nmap <buffer> <localleader>a <Plug>TaskPaperArchiveDone
-    nmap <buffer> <localleader>T <Plug>TaskPaperShowToday
-    nmap <buffer> <localleader>X <Plug>TaskPaperShowCancelled
-    nmap <buffer> <localleader>d <Plug>TaskPaperToggleDone
-    nmap <buffer> <localleader>t <Plug>TaskPaperToggleToday
-    nmap <buffer> <localleader>x <Plug>TaskPaperToggleCancelled
-    nmap <buffer> <localleader>m <Plug>TaskPaperMoveToProject
+    "nmap <buffer> <localleader>a <Plug>TaskPaperArchiveDone
+    "nmap <buffer> <localleader>T <Plug>TaskPaperShowToday
+    "nmap <buffer> <localleader>X <Plug>TaskPaperShowCancelled
+    "nmap <buffer> <localleader>d <Plug>TaskPaperToggleDone
+    "nmap <buffer> <localleader>t <Plug>TaskPaperToggleToday
+    "nmap <buffer> <localleader>x <Plug>TaskPaperToggleCancelled
+    "nmap <buffer> <localleader>m <Plug>TaskPaperMoveToProject
 endif
 
 let &cpo = s:save_cpo
