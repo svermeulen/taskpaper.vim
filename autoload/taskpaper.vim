@@ -393,7 +393,8 @@ function! taskpaper#update_project()
         endif
     endfor
 
-    call taskpaper#update_tag('project', join(reverse(projects), ' / '))
+    " This is just noise in the archive list so ignore
+    "call taskpaper#update_tag('project', join(reverse(projects), ' / '))
 endfunction
 
 function! taskpaper#archive_done()

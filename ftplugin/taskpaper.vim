@@ -83,7 +83,7 @@ if !exists("no_plugin_maps") && !exists("no_taskpaper_maps")
     \       :call taskpaper#move_to_project()<CR>
 
     nnoremap <silent> <buffer> <Plug>TaskPaperDoneThenArchive
-    \       :call taskpaper#toggle_tag('done', taskpaper#date())<CR>:call taskpaper#archive_done()<CR>:call repeat#set("\<Plug>TaskPaperDoneThenArchive")<cr>
+    \       :call taskpaper#toggle_tag('done', '')<CR>:call taskpaper#archive_done()<CR>:call repeat#set("\<Plug>TaskPaperDoneThenArchive")<cr>
 
     "nmap <buffer> <localleader>p <Plug>TaskPaperFoldProjects
     "nmap <buffer> <localleader>. <Plug>TaskPaperFoldNotes
