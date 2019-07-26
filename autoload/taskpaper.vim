@@ -288,7 +288,7 @@ function! taskpaper#delete(...)
     endif
 
     let save_fen = &l:foldenable
-    setlocal nofoldenable
+    " setlocal nofoldenable
 
     let depth = len(matchstr(getline(start), '^\t*'))
 
@@ -315,7 +315,7 @@ function! taskpaper#put(...)
     let indent = a:0 > 2 ? a:3 : 0
 
     let save_fen = &l:foldenable
-    setlocal nofoldenable
+    " setlocal nofoldenable
 
     if !empty(projects) && !taskpaper#search_project(projects)
         let &l:foldenable = save_fen
@@ -341,7 +341,7 @@ function! taskpaper#move(projects, ...)
     let lnum = a:0 > 0 ? a:1 : line('.')
 
     let save_fen = &l:foldenable
-    setlocal nofoldenable
+    " setlocal nofoldenable
 
     if !taskpaper#search_project(a:projects)
         let &l:foldenable = save_fen
@@ -412,7 +412,7 @@ function! taskpaper#archive_done()
 
     let save_fen = &l:foldenable
     let save_reg = [getreg('a'), getregtype('a')]
-    setlocal nofoldenable
+    " setlocal nofoldenable
     call setreg('a', '')
 
     call cursor(1, 1)
@@ -491,9 +491,9 @@ function! taskpaper#search(...)
         return
     endif
 
-    setlocal foldexpr=taskpaper#fold(v:lnum,pat,ipat)
-    setlocal foldminlines=0 foldtext=''
-    setlocal foldmethod=expr foldlevel=0 foldenable
+    " setlocal foldexpr=taskpaper#fold(v:lnum,pat,ipat)
+    " setlocal foldminlines=0 foldtext=''
+    " setlocal foldmethod=expr foldlevel=0 foldenable
 endfunction
 
 function! taskpaper#fold_except_range(lnum, begin, end)
@@ -533,9 +533,9 @@ function! taskpaper#focus_project()
         endif
     endwhile
 
-    setlocal foldexpr=taskpaper#fold_except_range(v:lnum,begin,end)
-    setlocal foldminlines=0 foldtext=''
-    setlocal foldmethod=expr foldlevel=0 foldenable
+    " setlocal foldexpr=taskpaper#fold_except_range(v:lnum,begin,end)
+    " setlocal foldminlines=0 foldtext=''
+    " setlocal foldmethod=expr foldlevel=0 foldenable
 endfunction
 
 function! taskpaper#search_tag(...)
@@ -563,9 +563,9 @@ function! taskpaper#_fold_projects(lnum)
 endfunction
 
 function! taskpaper#fold_projects()
-    setlocal foldexpr=taskpaper#_fold_projects(v:lnum)
-    setlocal foldminlines=0 foldtext=foldtext()
-    setlocal foldmethod=expr foldlevel=0 foldenable
+    " setlocal foldexpr=taskpaper#_fold_projects(v:lnum)
+    " setlocal foldminlines=0 foldtext=foldtext()
+    " setlocal foldmethod=expr foldlevel=0 foldenable
 endfunction
 
 function! taskpaper#tag_style(...)
