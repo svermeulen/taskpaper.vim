@@ -12,4 +12,4 @@ pluginManagement {
   }
 }
 
-rootProject.name = 'taskpaper.vim'
+rootProject.name = 'taskpaper'
